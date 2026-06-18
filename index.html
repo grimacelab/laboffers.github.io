@@ -1,10 +1,9 @@
- <div class="offers-wrapper">
+<div class="offers-wrapper">
     <div class="section-container">
         <div class="editorial-tag" id="offers">Current Offers</div>
 
         <div class="offer-grid">
             
-            <!-- Tier 01: Cohort -->
             <div class="offer-card highlight">
                 <div class="card-content">
                     <div class="tier-label">01 / Collective Cohort</div>
@@ -24,7 +23,6 @@
                 </div>
             </div> 
 
-            <!-- Tier 02: Individual -->
             <div class="offer-card">
                 <div class="card-content">
                     <div class="tier-label">02 / Premium Individual</div>
@@ -48,7 +46,6 @@
                 </div>
             </div>
 
-            <!-- Tier 03: Corporate -->
             <div class="offer-card">
                 <div class="card-content">
                     <div class="tier-label">03 / Institutional Tier</div>
@@ -116,7 +113,7 @@
     /* Grid layout matching cards accurately */
     .offer-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         align-items: stretch;
     }
@@ -312,11 +309,32 @@
 
     /* Responsive scaling updates */
     @media (max-width: 768px) {
+        .offers-wrapper {
+            padding: 3rem 1rem;
+        }
+        .editorial-tag {
+            margin-bottom: 2rem;
+        }
         .offer-grid {
             grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
         .offer-card {
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.25rem;
+        }
+        .offer-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+        .price-readout, .price-stack {
+            font-size: 1.35rem;
+        }
+    }
+    
+    /* Specific adjustment for ultra-compact devices */
+    @media (max-width: 360px) {
+        .offer-grid {
+            grid-template-columns: minmax(0, 1fr);
         }
     }
 </style>
