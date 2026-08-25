@@ -83,7 +83,7 @@
 </div>
 
 <style>
-    /* Standalone Styles Independent of Website Framework */
+    /* Global Container Setup */
     .offers-wrapper {
         padding: 5rem 1.5rem;
         background-color: #fcfbfa; /* Warm off-white */
@@ -91,11 +91,21 @@
         color: #111111;
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .offers-wrapper *, 
+    .offers-wrapper *::before, 
+    .offers-wrapper *::after {
+        box-sizing: border-box;
     }
 
     .section-container {
         max-width: 1200px;
         margin: 0 auto;
+        width: 100%;
     }
 
     .editorial-tag {
@@ -110,12 +120,13 @@
         margin-bottom: 3rem;
     }
 
-    /* Grid layout matching cards accurately */
+    /* Desktop Grid Layout */
     .offer-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2rem;
         align-items: stretch;
+        width: 100%;
     }
 
     /* Strict Card Design */
@@ -128,6 +139,8 @@
         justify-content: space-between;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
         position: relative;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     /* Active Pilot Highlight Variant */
@@ -160,7 +173,7 @@
     }
 
     .offer-card h3 {
-        font-family: "Times New Roman", Times, serif;
+        font-family: "Playfair Display", "Times New Roman", Times, serif;
         font-size: 2rem;
         font-weight: 400;
         line-height: 1.2;
@@ -238,7 +251,7 @@
         line-height: 1.4;
     }
 
-    /* Card Footer and Alignment Layouts */
+    /* Card Footer Layout */
     .card-footer {
         margin-top: auto;
         border-top: 1px solid #111111;
@@ -247,18 +260,20 @@
 
     .price-readout {
         display: block;
-        font-family: "Times New Roman", Times, serif;
-        font-size: 1.5rem;
+        font-family: "Playfair Display", "Times New Roman", Times, serif;
+        font-size: 1.4rem;
         font-weight: 400;
         color: #111111;
         margin-bottom: 1.25rem;
+        word-break: break-word;
+        hyphens: auto;
     }
 
     .price-stack {
         display: flex;
         flex-direction: column;
-        font-family: "Times New Roman", Times, serif;
-        font-size: 1.5rem;
+        font-family: "Playfair Display", "Times New Roman", Times, serif;
+        font-size: 1.4rem;
         color: #111111;
         margin-bottom: 1.25rem;
         line-height: 1.2;
@@ -274,19 +289,19 @@
         font-weight: 600;
     }
 
-    /* Solid & Outline Buttons */
+    /* Action Buttons */
     .action-button {
         display: block;
         width: 100%;
-        box-sizing: border-box;
         text-align: center;
-        padding: 1rem;
+        padding: 1.125rem 1rem;
         text-decoration: none;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.15em;
         font-weight: 600;
         transition: all 0.2s ease;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .solid-button {
@@ -304,37 +319,68 @@
     .action-button:hover {
         background-color: #111111;
         color: #ffffff;
-        opacity: 0.9;
     }
 
-    /* Responsive scaling updates */
+    /* Mobile Responsive Optimizations (<768px) */
     @media (max-width: 768px) {
         .offers-wrapper {
             padding: 3rem 1rem;
         }
+        
         .editorial-tag {
             margin-bottom: 2rem;
         }
+        
         .offer-grid {
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 2rem;
         }
+        
         .offer-card {
             padding: 2rem 1.25rem;
         }
+        
+        .offer-card.highlight::before {
+            right: 12px;
+            font-size: 0.6rem;
+            padding: 2px 8px;
+        }
+
         .offer-card h3 {
             font-size: 1.75rem;
             margin-bottom: 1rem;
         }
-        .price-readout, .price-stack {
-            font-size: 1.35rem;
+        
+        .price-readout, 
+        .price-stack {
+            font-size: 1.25rem;
+            line-height: 1.35;
+        }
+
+        .features-list li {
+            font-size: 0.88rem;
+            padding: 0.75rem 0;
+        }
+
+        .action-button {
+            padding: 1rem 0.75rem;
+            font-size: 0.75rem;
         }
     }
-    
-    /* Specific adjustment for ultra-compact devices */
+
+    /* Ultra-small screens (<360px) */
     @media (max-width: 360px) {
-        .offer-grid {
-            grid-template-columns: minmax(0, 1fr);
+        .offers-wrapper {
+            padding: 2.5rem 0.75rem;
+        }
+
+        .offer-card {
+            padding: 1.75rem 1rem;
+        }
+
+        .price-readout, 
+        .price-stack {
+            font-size: 1.15rem;
         }
     }
 </style>
